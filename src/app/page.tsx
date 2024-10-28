@@ -1,7 +1,8 @@
-'use client'; // Mark this as a client component
+'use client'; // client component
 
 import { useState, ChangeEvent, FormEvent } from 'react';
-import UserCard from './components/UserCard'; // Import the new component
+import { useRouter } from 'next/navigation';
+import UserCard from './components/UserCard';
 
 const Home = () => {
   const [name, setName] = useState<string>('');
@@ -10,9 +11,15 @@ const Home = () => {
   const [gender, setGender] = useState<string>('');
   const [submittedData, setSubmittedData] = useState<any>(null);
 
+  const router = useRouter();
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmittedData({ name, email, isSubscribed, gender });
+  };
+
+  const goToDashboard = () => {
+    router.push('/dashboard');
   };
 
   return (
@@ -102,6 +109,14 @@ const Home = () => {
             className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 font-bold"
           >
             Submit
+          </button>
+
+          <button
+            type="button"
+            onClick={goToDashboard}
+            className="w-full mt-2 bg-green-600 text-white py-2 rounded-md hover:bg-green-700 font-bold"
+          >
+            Go to Dashboard
           </button>
         </form>
 
