@@ -1,4 +1,4 @@
-'use client'; // Ensures this is a client component
+'use client'; // client component
 
 import React from 'react';
 
