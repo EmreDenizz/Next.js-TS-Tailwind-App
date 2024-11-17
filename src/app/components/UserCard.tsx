@@ -1,4 +1,4 @@
-'use client'; // client component
+'use client';
 
 import React from 'react';
 
